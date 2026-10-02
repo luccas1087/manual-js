@@ -1,0 +1,978 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Manual Interativo de JavaScript para Front-End</title><style>
+:root{--bg:#0b1020;--surface:#11182b;--card:#17213a;--card2:#202d4b;--text:#f8fafc;--muted:#b9c5dc;--primary:#38bdf8;--secondary:#a78bfa;--accent:#22c55e;--danger:#fb7185;--border:#334155;--shadow:0 18px 50px rgba(0,0,0,.25);--radius:20px;--max:1240px}
+body.light{--bg:#f6f8fc;--surface:#e9eef7;--card:#fff;--card2:#f1f5f9;--text:#101828;--muted:#475569;--border:#d0d7e2;--shadow:0 14px 35px rgba(15,23,42,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}.progress{position:fixed;top:0;left:0;width:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--secondary));z-index:9999}.top{position:sticky;top:0;z-index:1000;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}.topin{max-width:var(--max);margin:auto;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#07111e;font-weight:1000}.actions{display:flex;gap:8px;align-items:center}.search{width:min(340px,40vw);padding:10px 13px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text)}button,input,select{font:inherit}.btn,.actionBtn{border:0;border-radius:12px;padding:10px 14px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#06111d;font-weight:800;cursor:pointer}.btn:hover,.actionBtn:hover{transform:translateY(-1px)}.success{background:var(--accent)!important;color:white!important}.layout{max-width:var(--max);margin:auto;padding:24px 18px;display:grid;grid-template-columns:270px 1fr;gap:24px}.side{position:sticky;top:78px;height:calc(100vh - 95px);overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}.side h3{margin:4px 8px 12px;color:var(--primary)}.side a{display:block;padding:7px 9px;border-radius:9px;text-decoration:none;color:var(--muted);font-size:.88rem}.side a:hover{background:var(--card2);color:var(--text)}.hero{padding:48px;border-radius:30px;background:radial-gradient(circle at 10% 10%,rgba(56,189,248,.32),transparent 32%),radial-gradient(circle at 90% 10%,rgba(167,139,250,.25),transparent 35%),var(--card);border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:24px}.hero h1{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;margin:0 0 18px}.hero p{max-width:850px;color:var(--muted);font-size:1.1rem}.badges{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:var(--card2);font-size:.85rem}.chapter{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px;margin-bottom:22px;box-shadow:var(--shadow)}.chapter h2{margin:0;color:var(--primary);font-size:1.8rem}.chapter .concept{color:var(--secondary);font-weight:800;margin:5px 0 10px}.chapter p{color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:18px}.panel h3{margin-top:0}.lab{min-height:170px;display:grid;align-content:center;gap:12px}.codeWrap{position:relative}.copy{position:absolute;right:8px;top:8px;border:0;border-radius:9px;padding:7px 9px;background:#334155;color:#fff;cursor:pointer}.code{background:#050816;color:#b7f7c0;border-radius:15px;padding:34px 15px 15px;overflow:auto;white-space:pre;font:13px/1.55 Consolas,monospace}.demoOutput{padding:12px 14px;border:1px dashed var(--border);border-radius:12px;background:var(--card)}.demoInput,.smallInput,select{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text)}.colorCard,.brightnessBox{padding:30px;border-radius:16px;background:#38bdf8;color:#06111d;font-weight:900;text-align:center}.brightnessBox{background:linear-gradient(135deg,#f59e0b,#fb7185)}.stage{height:80px;border:1px dashed var(--border);border-radius:14px;padding:10px;overflow:hidden}.moveBox{width:80px;height:60px;border-radius:12px;background:var(--secondary);display:grid;place-items:center;font-weight:900}.hidden{display:none!important}.bigNumber{font-size:2.8rem;font-weight:900}.circle{width:80px;height:80px;border-radius:50%;background:var(--primary);transition:.15s}.themeArea,.focusArea,.paletteArea{padding:25px;border-radius:16px;background:#fff;color:#111827;border:2px solid var(--border);transition:.25s}.demo-dark{background:#0b1020!important;color:#fff!important}.modalDemo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);place-items:center;z-index:5000}.modalDemo.show{display:grid}.modalCard{background:var(--card);padding:30px;border-radius:20px;max-width:420px;border:1px solid var(--border)}.accordion{border:1px solid var(--border);border-radius:12px;margin:8px 0;overflow:hidden}.accHead{padding:13px;font-weight:800;cursor:pointer}.accBody{max-height:0;overflow:hidden;padding:0 13px;transition:.25s;color:var(--muted)}.accordion.open .accBody{max-height:100px;padding:13px}.tabBtn{padding:9px 12px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer}.tabBtn.active{background:var(--primary);color:#06111d}.tabPanel{display:none;padding:18px;background:var(--card);border:1px solid var(--border)}.tabPanel.active{display:block}.carousel img{width:100%;max-height:350px;object-fit:cover;border-radius:16px}.carouselControls{display:flex;justify-content:center;align-items:center;gap:18px;padding-top:10px}.dragStage{height:180px;position:relative;border:1px dashed var(--border);border-radius:15px;overflow:hidden}.dragCard{position:absolute;left:20px;top:55px;padding:25px;background:var(--secondary);border-radius:14px;font-weight:900;cursor:grab}.mouseArea{height:160px;border-radius:15px;background:radial-gradient(circle at center,#273c69,#11182b);display:grid;place-items:center;position:relative}.mouseArea #mouseResult{position:absolute;bottom:12px}.generated,.removable{display:inline-block;padding:10px 13px;margin:5px;background:var(--card);border:1px solid var(--border);border-radius:10px}.generated{border-color:var(--primary)}.removable{cursor:pointer}.taskList{padding-left:22px}.taskList li{margin:7px 0}.observeSpace{height:90px}.observeBox{padding:35px;border-radius:16px;background:var(--secondary);opacity:.15;transform:translateY(25px);transition:.6s;text-align:center;font-weight:900}.observeBox.visible{opacity:1;transform:none}.tooltipTarget{display:inline-block;position:relative;padding:15px;background:var(--card);border:1px solid var(--border);border-radius:12px}.tooltipBox{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:8px 12px;border-radius:8px;display:none;white-space:nowrap}.tooltipBox.show{display:block}.focus-mode{box-shadow:0 0 0 9999px rgba(0,0,0,.78);position:relative;z-index:2;background:var(--card);color:var(--text)}.paletteArea{--demo-color:#8b5cf6;background:var(--demo-color);color:white}.transformStage{height:180px;display:grid;place-items:center;overflow:hidden;border:1px dashed var(--border);border-radius:15px}.transformBox{padding:35px;background:var(--primary);border-radius:15px;font-weight:900}.codeLike{white-space:pre-wrap;font-family:Consolas,monospace}.info{border-left:5px solid var(--accent);padding:12px 15px;background:var(--card2);border-radius:10px}.challenge{border-left:5px solid var(--secondary);margin-top:15px}.footer{text-align:center;padding:45px;color:var(--muted)}@media(max-width:900px){
+.layout{grid-template-columns:1fr;padding:18px 14px;gap:16px}
+.side{position:relative;top:0;height:auto;max-height:230px;overflow:auto;padding:12px}
+.side h3{position:sticky;top:0;background:var(--surface);padding:6px 8px;margin:0 0 8px;z-index:2}
+.grid{grid-template-columns:1fr}
+.hero{padding:30px 22px}
+.chapter{padding:22px}
+.search{width:min(45vw,320px)}
+}
+@media(max-width:640px){
+.topin{padding:10px 12px;align-items:flex-start;flex-wrap:wrap}
+.brand{font-size:.95rem}
+.logo{width:40px;height:40px;flex:0 0 auto}
+.actions{width:100%;display:grid;grid-template-columns:1fr auto;gap:7px}
+.search{width:100%;min-width:0}
+.btn{padding:9px 11px}
+.layout{padding:12px 9px}
+.side{max-height:190px;border-radius:16px}
+.side a{font-size:.82rem;padding:6px 7px}
+.hero{padding:24px 17px;border-radius:20px}
+.hero h1{font-size:clamp(1.9rem,10vw,3rem)}
+.hero p{font-size:1rem}
+.chapter{padding:18px;border-radius:18px}
+.chapter h2{font-size:1.45rem}
+.panel{padding:14px}
+.code{font-size:12px;padding:32px 10px 12px;max-width:100%;overflow-x:auto}
+.codeWrap{max-width:100%;overflow:hidden}
+.lab{min-height:140px}
+.demoInput,.smallInput,select{width:100%;max-width:100%}
+.stage,.dragStage,.mouseArea,.transformStage{max-width:100%}
+.carousel img{max-height:230px}
+.modalCard{width:calc(100% - 28px);max-width:420px;padding:22px}
+.table-wrap{overflow-x:auto;max-width:100%}
+table{min-width:560px}
+img,video,iframe{max-width:100%;height:auto}
+pre{max-width:100%;overflow-x:auto}
+}
+@media(max-width:420px){
+.actions{grid-template-columns:1fr}
+.btn{width:100%}
+.badges{gap:6px}
+.badge{font-size:.78rem;padding:6px 9px}
+.chapter{margin-bottom:14px}
+.copy{font-size:.78rem;padding:6px 8px}
+}
+.usage-guide code, .chapter code{background:var(--card2);padding:2px 5px;border-radius:5px}.htmlCode{color:#8bd5ff}.usage-guide .code{margin-top:10px}.usage-guide .panel p{margin-top:8px}</style></head><body>
+<div class="progress" id="progress"></div>
+<header class="top"><div class="topin"><div class="brand"><div class="logo">JS</div><div>Manual Interativo de JavaScript<br><small>Front-End • laboratório prático</small></div></div><div class="actions"><input class="search" id="search" placeholder="Pesquisar conceito ou experiência..."><button class="btn" id="themeBtn">Tema</button></div></div></header>
+<div class="layout"><aside class="side"><h3>Experiências</h3><a href="#lab01">01. Clique e reaja</a><a href="#lab02">02. Mude um texto</a><a href="#lab03">03. Troque a cor</a><a href="#lab04">04. Clarear e escurecer</a><a href="#lab05">05. Mover um elemento</a><a href="#lab06">06. Mostrar e esconder</a><a href="#lab07">07. Contador</a><a href="#lab08">08. Campo de texto ao vivo</a><a href="#lab09">09. Slider interativo</a><a href="#lab10">10. Tema claro e escuro</a><a href="#lab11">11. Selecionar uma opção</a><a href="#lab12">12. Checkbox</a><a href="#lab13">13. Botão com feedback</a><a href="#lab14">14. Modal</a><a href="#lab15">15. Acordeão</a><a href="#lab16">16. Abas</a><a href="#lab17">17. Carrossel de fotos</a><a href="#lab18">18. Arrastar elemento</a><a href="#lab19">19. Teclado</a><a href="#lab20">20. Mouse</a><a href="#lab21">21. Criar elementos</a><a href="#lab22">22. Remover elementos</a><a href="#lab23">23. Lista de tarefas</a><a href="#lab24">24. Filtro de lista</a><a href="#lab25">25. Ordenar itens</a><a href="#lab26">26. Pesquisar com find</a><a href="#lab27">27. Somar dados</a><a href="#lab28">28. Formulário</a><a href="#lab29">29. Validação</a><a href="#lab30">30. localStorage</a><a href="#lab31">31. sessionStorage</a><a href="#lab32">32. JSON</a><a href="#lab33">33. setTimeout</a><a href="#lab34">34. setInterval</a><a href="#lab35">35. Promise</a><a href="#lab36">36. async/await</a><a href="#lab37">37. Fetch API</a><a href="#lab38">38. Tratamento de erros</a><a href="#lab39">39. Tema persistente</a><a href="#lab40">40. Barra de progresso</a><a href="#lab41">41. IntersectionObserver</a><a href="#lab42">42. Contagem regressiva</a><a href="#lab43">43. Número aleatório</a><a href="#lab44">44. Gerador de senha</a><a href="#lab45">45. Tooltip</a><a href="#lab46">46. Modo foco</a><a href="#lab47">47. Paleta de cores</a><a href="#lab48">48. Transformações</a><a href="#lab49">49. Mini calculadora</a><a href="#lab50">50. Mini jogo</a></aside><main>
+<section class="hero" id="inicio"><h1>JavaScript: veja o código acontecer.</h1>
+<p>Este manual foi pensado como uma página única e um laboratório. Em vez de apenas ler exemplos, você pode clicar, digitar, arrastar, mudar cores, mover objetos, usar armazenamento, consultar uma API e construir pequenos projetos — sempre vendo <strong>conceito + experiência + código + resultado</strong>.</p>
+<div class="badges"><span class="badge">Página única</span><span class="badge">50 laboratórios</span><span class="badge">DOM</span><span class="badge">Eventos</span><span class="badge">Animações</span><span class="badge">APIs</span><span class="badge">localStorage</span><span class="badge">Projetos</span></div>
+<div class="info"><strong>Como estudar:</strong> primeiro leia o conceito; depois mexa no laboratório; em seguida leia o código e tente explicar cada linha. Por fim, faça o desafio sem copiar.</div></section><section class="chapter usage-guide" id="como-usar">
+<h2>Antes de começar: onde o JavaScript fica?</h2>
+<div class="concept">JavaScript interno no HTML</div>
+<p>O navegador lê o HTML, encontra os elementos da página e executa o JavaScript colocado dentro de uma tag <code>&lt;script&gt;</code>. Neste manual, os laboratórios usam principalmente <strong>JavaScript interno</strong>: HTML e JavaScript ficam no mesmo arquivo.</p>
+<div class="grid">
+<div class="panel"><h3>1. O HTML cria o elemento</h3><p>Primeiro colocamos o botão, texto, imagem, campo etc. dentro do <code>&lt;body&gt;</code>.</p><pre class="code">&lt;button id="meuBotao"&gt;Clique aqui&lt;/button&gt;
+&lt;p id="mensagem"&gt;Aguardando...&lt;/p&gt;</pre></div>
+<div class="panel"><h3>2. O JavaScript encontra o elemento</h3><p>Depois, normalmente colocamos o <code>&lt;script&gt;</code> no final do <code>&lt;body&gt;</code>. Assim o HTML já foi criado quando o JavaScript procurar os elementos.</p><pre class="code">&lt;script&gt;
+  const botao = document.querySelector('#meuBotao');
+
+  botao.addEventListener('click', () =&gt; {
+    document.querySelector('#mensagem').textContent = 'Funcionou!';
+  });
+&lt;/script&gt;
+&lt;/body&gt;</pre></div>
+</div>
+<div class="info"><strong>📍 Regra visual deste manual:</strong> <code>&lt;body&gt;</code> contém o que aparece na tela; <code>&lt;script&gt;</code> contém o comportamento. Nos exemplos abaixo, procure sempre primeiro o elemento HTML e depois o código JavaScript que dá vida a ele.</div>
+<div class="grid">
+<div class="panel"><h3>Uso 1 — direto no HTML</h3><pre class="code">&lt;button onclick="alert('Olá!')"&gt;Clique&lt;/button&gt;</pre><p>É possível escrever JavaScript diretamente em um atributo como <code>onclick</code>. É útil para demonstrar rapidamente um conceito, mas em projetos maiores preferimos separar HTML e JavaScript.</p></div>
+<div class="panel"><h3>Uso 2 — script interno</h3><pre class="code">&lt;body&gt;
+  &lt;button id="btn"&gt;Clique&lt;/button&gt;
+
+  &lt;script&gt;
+    document.querySelector('#btn').onclick = () =&gt; {
+      alert('Olá!');
+    };
+  &lt;/script&gt;
+&lt;/body&gt;</pre><p><strong>É o padrão usado nos laboratórios deste manual.</strong></p></div>
+</div>
+<div class="panel"><h3>Uso 3 — JavaScript externo</h3><pre class="code">&lt;script src="script.js" defer&gt;&lt;/script&gt;</pre><p>Quando o projeto cresce, o JavaScript pode ficar em um arquivo separado. O atributo <code>defer</code> permite carregar o script sem bloquear a construção da página.</p></div>
+</section><section class="chapter" id="lab01" data-search="Clique e reaja Eventos de clique Um botão pode ouvir uma ação do usuário e executar JavaScript.">
+<h2>01. Clique e reaja</h2><div class="concept">Eventos de clique</div><p>Um botão pode ouvir uma ação do usuário e executar JavaScript.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Um botão pode ouvir uma ação do usuário e executar JavaScript.</p><div class="lab"><button class="actionBtn" id="btnClick">Clique aqui</button><div class="demoOutput" id="clickResult">Aguardando clique...</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;btnClick&quot;&gt;Clique aqui&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;clickResult&quot;&gt;Aguardando clique...&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const botao = document.querySelector(&#x27;#btnClick&#x27;);
+botao.addEventListener(&#x27;click&#x27;, () =&gt; {
+  document.querySelector(&#x27;#clickResult&#x27;).textContent = &#x27;Você clicou! O JavaScript respondeu ao evento.&#x27;;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>clique e reaja</strong>.</div></section><section class="chapter" id="lab02" data-search="Mude um texto DOM e textContent JavaScript consegue localizar um elemento e trocar seu conteúdo.">
+<h2>02. Mude um texto</h2><div class="concept">DOM e textContent</div><p>JavaScript consegue localizar um elemento e trocar seu conteúdo.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JavaScript consegue localizar um elemento e trocar seu conteúdo.</p><div class="lab"><h3 id="dynamicText">Texto original</h3><button class="actionBtn" id="textSwap">Alterar texto</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;h3 id=&quot;dynamicText&quot;&gt;Texto original&lt;/h3&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;textSwap&quot;&gt;Alterar texto&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#textSwap&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  document.querySelector(&#x27;#dynamicText&#x27;).textContent = &#x27;O texto foi alterado pelo JavaScript!&#x27;;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>mude um texto</strong>.</div></section><section class="chapter" id="lab03" data-search="Troque a cor style e CSS Podemos alterar estilos de elementos em tempo de execução.">
+<h2>03. Troque a cor</h2><div class="concept">style e CSS</div><p>Podemos alterar estilos de elementos em tempo de execução.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Podemos alterar estilos de elementos em tempo de execução.</p><div class="lab"><input id="colorPicker" type="color" value="#38bdf8"><div class="colorCard" id="colorCard">Minha cor muda</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input id=&quot;colorPicker&quot; type=&quot;color&quot; value=&quot;#38bdf8&quot;&gt;&lt;div class=&quot;colorCard&quot; id=&quot;colorCard&quot;&gt;Minha cor muda&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const cor = document.querySelector(&#x27;#colorPicker&#x27;);
+cor.addEventListener(&#x27;input&#x27;, () =&gt; {
+  document.querySelector(&#x27;#colorCard&#x27;).style.backgroundColor = cor.value;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>troque a cor</strong>.</div></section><section class="chapter" id="lab04" data-search="Clarear e escurecer Estilos dinâmicos JavaScript pode alterar aparência, classes e propriedades CSS.">
+<h2>04. Clarear e escurecer</h2><div class="concept">Estilos dinâmicos</div><p>JavaScript pode alterar aparência, classes e propriedades CSS.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JavaScript pode alterar aparência, classes e propriedades CSS.</p><div class="lab"><div class="brightnessBox" id="brightnessBox">Brilho ajustável</div><button class="actionBtn" id="darken">Escurecer</button><button class="actionBtn" id="lighten">Clarear</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;brightnessBox&quot; id=&quot;brightnessBox&quot;&gt;Brilho ajustável&lt;/div&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;darken&quot;&gt;Escurecer&lt;/button&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;lighten&quot;&gt;Clarear&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let brilho = 100;
+function atualizarBrilho() {
+  document.querySelector(&#x27;#brightnessBox&#x27;).style.filter = `brightness(${brilho}%)`;
+}
+document.querySelector(&#x27;#darken&#x27;).onclick = () =&gt; { brilho = Math.max(30, brilho - 10); atualizarBrilho(); };
+document.querySelector(&#x27;#lighten&#x27;).onclick = () =&gt; { brilho = Math.min(160, brilho + 10); atualizarBrilho(); };</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>clarear e escurecer</strong>.</div></section><section class="chapter" id="lab05" data-search="Mover um elemento Posição e transformação Uma interface pode responder alterando posição, escala e rotação.">
+<h2>05. Mover um elemento</h2><div class="concept">Posição e transformação</div><p>Uma interface pode responder alterando posição, escala e rotação.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Uma interface pode responder alterando posição, escala e rotação.</p><div class="lab"><input id="moveRange" type="range" min="0" max="300" value="0"><div class="stage"><div class="moveBox" id="moveBox">Mova</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input id=&quot;moveRange&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;300&quot; value=&quot;0&quot;&gt;&lt;div class=&quot;stage&quot;&gt;&lt;div class=&quot;moveBox&quot; id=&quot;moveBox&quot;&gt;Mova&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let x = 0;
+document.querySelector(&#x27;#moveRange&#x27;).addEventListener(&#x27;input&#x27;, e =&gt; {
+  x = e.target.value;
+  document.querySelector(&#x27;#moveBox&#x27;).style.transform = `translateX(${x}px)`;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>mover um elemento</strong>.</div></section><section class="chapter" id="lab06" data-search="Mostrar e esconder classList Classes CSS são uma forma organizada de controlar estados visuais.">
+<h2>06. Mostrar e esconder</h2><div class="concept">classList</div><p>Classes CSS são uma forma organizada de controlar estados visuais.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Classes CSS são uma forma organizada de controlar estados visuais.</p><div class="lab"><button class="actionBtn" id="toggleBtn">Mostrar / esconder</button><div id="secretBox" class="demoOutput">Agora você consegue me ver.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;toggleBtn&quot;&gt;Mostrar / esconder&lt;/button&gt;&lt;div id=&quot;secretBox&quot; class=&quot;demoOutput&quot;&gt;Agora você consegue me ver.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#toggleBtn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+  document.querySelector(&#x27;#secretBox&#x27;).classList.toggle(&#x27;hidden&#x27;);
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>mostrar e esconder</strong>.</div></section><section class="chapter" id="lab07" data-search="Contador Estado e eventos Um contador mostra a ideia de estado: um valor muda e a interface acompanha.">
+<h2>07. Contador</h2><div class="concept">Estado e eventos</div><p>Um contador mostra a ideia de estado: um valor muda e a interface acompanha.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Um contador mostra a ideia de estado: um valor muda e a interface acompanha.</p><div class="lab"><div class="bigNumber" id="counterValue">0</div><button class="actionBtn" id="minus">−</button><button class="actionBtn" id="zero">0</button><button class="actionBtn" id="plus">+</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;bigNumber&quot; id=&quot;counterValue&quot;&gt;0&lt;/div&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;minus&quot;&gt;−&lt;/button&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;zero&quot;&gt;0&lt;/button&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;plus&quot;&gt;+&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let contador = 0;
+const visor = document.querySelector(&#x27;#counterValue&#x27;);
+document.querySelector(&#x27;#plus&#x27;).onclick = () =&gt; visor.textContent = ++contador;
+document.querySelector(&#x27;#minus&#x27;).onclick = () =&gt; visor.textContent = --contador;
+document.querySelector(&#x27;#zero&#x27;).onclick = () =&gt; { contador = 0; visor.textContent = contador; };</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>contador</strong>.</div></section><section class="chapter" id="lab08" data-search="Campo de texto ao vivo input e eventos O evento input permite reagir enquanto o usuário digita.">
+<h2>08. Campo de texto ao vivo</h2><div class="concept">input e eventos</div><p>O evento input permite reagir enquanto o usuário digita.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>O evento input permite reagir enquanto o usuário digita.</p><div class="lab"><input class="demoInput" id="nameInput" placeholder="Digite seu nome"><div class="demoOutput" id="namePreview">Seu nome aparecerá aqui</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;nameInput&quot; placeholder=&quot;Digite seu nome&quot;&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;namePreview&quot;&gt;Seu nome aparecerá aqui&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#nameInput&#x27;).addEventListener(&#x27;input&#x27;, e =&gt; {
+  document.querySelector(&#x27;#namePreview&#x27;).textContent = e.target.value || &#x27;Seu nome aparecerá aqui&#x27;;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>campo de texto ao vivo</strong>.</div></section><section class="chapter" id="lab09" data-search="Slider interativo range Inputs do tipo range são excelentes para controlar propriedades visuais.">
+<h2>09. Slider interativo</h2><div class="concept">range</div><p>Inputs do tipo range são excelentes para controlar propriedades visuais.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Inputs do tipo range são excelentes para controlar propriedades visuais.</p><div class="lab"><input id="sizeRange" type="range" min="40" max="180" value="80"><div class="circle" id="sizeCircle"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input id=&quot;sizeRange&quot; type=&quot;range&quot; min=&quot;40&quot; max=&quot;180&quot; value=&quot;80&quot;&gt;&lt;div class=&quot;circle&quot; id=&quot;sizeCircle&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#sizeRange&#x27;).addEventListener(&#x27;input&#x27;, e =&gt; {
+  document.querySelector(&#x27;#sizeCircle&#x27;).style.width = e.target.value + &#x27;px&#x27;;
+  document.querySelector(&#x27;#sizeCircle&#x27;).style.height = e.target.value + &#x27;px&#x27;;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>slider interativo</strong>.</div></section><section class="chapter" id="lab10" data-search="Tema claro e escuro classList e tema Um tema pode ser implementado alternando uma classe no body.">
+<h2>10. Tema claro e escuro</h2><div class="concept">classList e tema</div><p>Um tema pode ser implementado alternando uma classe no body.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Um tema pode ser implementado alternando uma classe no body.</p><div class="lab"><div class="themeArea" id="themeArea"><strong>Área de demonstração</strong><p>O JavaScript alterna uma classe CSS.</p></div><button class="actionBtn" id="themeDemo">Alternar tema</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;themeArea&quot; id=&quot;themeArea&quot;&gt;&lt;strong&gt;Área de demonstração&lt;/strong&gt;&lt;p&gt;O JavaScript alterna uma classe CSS.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;themeDemo&quot;&gt;Alternar tema&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#themeDemo&#x27;).onclick = () =&gt; {
+  document.querySelector(&#x27;#themeArea&#x27;).classList.toggle(&#x27;demo-dark&#x27;);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>tema claro e escuro</strong>.</div></section><section class="chapter" id="lab11" data-search="Selecionar uma opção select/change O JavaScript pode reagir à escolha feita em uma lista.">
+<h2>11. Selecionar uma opção</h2><div class="concept">select/change</div><p>O JavaScript pode reagir à escolha feita em uma lista.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>O JavaScript pode reagir à escolha feita em uma lista.</p><div class="lab"><select id="languageSelect" class="demoInput"><option>JavaScript</option><option>Python</option><option>Java</option><option>PHP</option></select><div class="demoOutput" id="languageResult">Escolha uma opção.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;select id=&quot;languageSelect&quot; class=&quot;demoInput&quot;&gt;&lt;option&gt;JavaScript&lt;/option&gt;&lt;option&gt;Python&lt;/option&gt;&lt;option&gt;Java&lt;/option&gt;&lt;option&gt;PHP&lt;/option&gt;&lt;/select&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;languageResult&quot;&gt;Escolha uma opção.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#languageSelect&#x27;).addEventListener(&#x27;change&#x27;, e =&gt; {
+  document.querySelector(&#x27;#languageResult&#x27;).textContent = `Você escolheu: ${e.target.value}`;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>selecionar uma opção</strong>.</div></section><section class="chapter" id="lab12" data-search="Checkbox checked Checkboxes permitem construir configurações e preferências interativas.">
+<h2>12. Checkbox</h2><div class="concept">checked</div><p>Checkboxes permitem construir configurações e preferências interativas.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Checkboxes permitem construir configurações e preferências interativas.</p><div class="lab"><label><input class="pref" type="checkbox" value="Som"> Som</label> <label><input class="pref" type="checkbox" value="Notificações"> Notificações</label> <label><input class="pref" type="checkbox" value="Animações"> Animações</label><div class="demoOutput" id="prefResult">Nenhuma preferência ativa.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;label&gt;&lt;input class=&quot;pref&quot; type=&quot;checkbox&quot; value=&quot;Som&quot;&gt; Som&lt;/label&gt; &lt;label&gt;&lt;input class=&quot;pref&quot; type=&quot;checkbox&quot; value=&quot;Notificações&quot;&gt; Notificações&lt;/label&gt; &lt;label&gt;&lt;input class=&quot;pref&quot; type=&quot;checkbox&quot; value=&quot;Animações&quot;&gt; Animações&lt;/label&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;prefResult&quot;&gt;Nenhuma preferência ativa.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelectorAll(&#x27;.pref&#x27;).forEach(box =&gt; {
+  box.addEventListener(&#x27;change&#x27;, () =&gt; {
+    const ativos = [...document.querySelectorAll(&#x27;.pref:checked&#x27;)].map(x =&gt; x.value);
+    document.querySelector(&#x27;#prefResult&#x27;).textContent =
+      ativos.length ? &#x27;Ativos: &#x27; + ativos.join(&#x27;, &#x27;) : &#x27;Nenhuma preferência ativa.&#x27;;
+  });
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>checkbox</strong>.</div></section><section class="chapter" id="lab13" data-search="Botão com feedback feedback visual Interfaces melhores informam o usuário imediatamente após uma ação.">
+<h2>13. Botão com feedback</h2><div class="concept">feedback visual</div><p>Interfaces melhores informam o usuário imediatamente após uma ação.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Interfaces melhores informam o usuário imediatamente após uma ação.</p><div class="lab"><button class="actionBtn" id="saveBtn">Salvar</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;saveBtn&quot;&gt;Salvar&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#saveBtn&#x27;).onclick = function() {
+  this.textContent = &#x27;✓ Salvo!&#x27;;
+  this.classList.add(&#x27;success&#x27;);
+  setTimeout(() =&gt; {
+    this.textContent = &#x27;Salvar&#x27;;
+    this.classList.remove(&#x27;success&#x27;);
+  }, 1500);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>botão com feedback</strong>.</div></section><section class="chapter" id="lab14" data-search="Modal overlay e estado Uma janela modal é apenas uma interface que aparece sobre o conteúdo.">
+<h2>14. Modal</h2><div class="concept">overlay e estado</div><p>Uma janela modal é apenas uma interface que aparece sobre o conteúdo.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Uma janela modal é apenas uma interface que aparece sobre o conteúdo.</p><div class="lab"><button class="actionBtn" id="openModal">Abrir modal</button><div class="modalDemo" id="modalDemo"><div class="modalCard"><h3>Olá!</h3><p>Esta janela foi aberta pelo JavaScript.</p><button class="actionBtn" id="closeModal">Fechar</button></div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;openModal&quot;&gt;Abrir modal&lt;/button&gt;&lt;div class=&quot;modalDemo&quot; id=&quot;modalDemo&quot;&gt;&lt;div class=&quot;modalCard&quot;&gt;&lt;h3&gt;Olá!&lt;/h3&gt;&lt;p&gt;Esta janela foi aberta pelo JavaScript.&lt;/p&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;closeModal&quot;&gt;Fechar&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const modal = document.querySelector(&#x27;#modalDemo&#x27;);
+document.querySelector(&#x27;#openModal&#x27;).onclick = () =&gt; modal.classList.add(&#x27;show&#x27;);
+document.querySelector(&#x27;#closeModal&#x27;).onclick = () =&gt; modal.classList.remove(&#x27;show&#x27;);</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>modal</strong>.</div></section><section class="chapter" id="lab15" data-search="Acordeão mostrar conteúdo Acordeões organizam grandes quantidades de informação sem poluir a tela.">
+<h2>15. Acordeão</h2><div class="concept">mostrar conteúdo</div><p>Acordeões organizam grandes quantidades de informação sem poluir a tela.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Acordeões organizam grandes quantidades de informação sem poluir a tela.</p><div class="lab"><div class="accordion"><div class="accHead">O que é DOM?</div><div class="accBody">É a representação da página que o JavaScript pode manipular.</div></div><div class="accordion"><div class="accHead">O que é evento?</div><div class="accBody">É algo que acontece e pode disparar uma função.</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;accordion&quot;&gt;&lt;div class=&quot;accHead&quot;&gt;O que é DOM?&lt;/div&gt;&lt;div class=&quot;accBody&quot;&gt;É a representação da página que o JavaScript pode manipular.&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;accordion&quot;&gt;&lt;div class=&quot;accHead&quot;&gt;O que é evento?&lt;/div&gt;&lt;div class=&quot;accBody&quot;&gt;É algo que acontece e pode disparar uma função.&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelectorAll(&#x27;.accHead&#x27;).forEach(head =&gt; {
+  head.onclick = () =&gt; head.parentElement.classList.toggle(&#x27;open&#x27;);
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>acordeão</strong>.</div></section><section class="chapter" id="lab16" data-search="Abas tabs Abas permitem trocar o conteúdo exibido sem recarregar a página.">
+<h2>16. Abas</h2><div class="concept">tabs</div><p>Abas permitem trocar o conteúdo exibido sem recarregar a página.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Abas permitem trocar o conteúdo exibido sem recarregar a página.</p><div class="lab"><div><button class="tabBtn active" data-tab="tabA">HTML</button><button class="tabBtn" data-tab="tabB">CSS</button><button class="tabBtn" data-tab="tabC">JavaScript</button></div><div id="tabA" class="tabPanel active">Estrutura.</div><div id="tabB" class="tabPanel">Apresentação.</div><div id="tabC" class="tabPanel">Comportamento e interatividade.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div&gt;&lt;button class=&quot;tabBtn active&quot; data-tab=&quot;tabA&quot;&gt;HTML&lt;/button&gt;&lt;button class=&quot;tabBtn&quot; data-tab=&quot;tabB&quot;&gt;CSS&lt;/button&gt;&lt;button class=&quot;tabBtn&quot; data-tab=&quot;tabC&quot;&gt;JavaScript&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;tabA&quot; class=&quot;tabPanel active&quot;&gt;Estrutura.&lt;/div&gt;&lt;div id=&quot;tabB&quot; class=&quot;tabPanel&quot;&gt;Apresentação.&lt;/div&gt;&lt;div id=&quot;tabC&quot; class=&quot;tabPanel&quot;&gt;Comportamento e interatividade.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelectorAll(&#x27;.tabBtn&#x27;).forEach(btn =&gt; {
+  btn.onclick = () =&gt; {
+    document.querySelectorAll(&#x27;.tabBtn,.tabPanel&#x27;).forEach(x =&gt; x.classList.remove(&#x27;active&#x27;));
+    btn.classList.add(&#x27;active&#x27;);
+    document.querySelector(&#x27;#&#x27; + btn.dataset.tab).classList.add(&#x27;active&#x27;);
+  };
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>abas</strong>.</div></section><section class="chapter" id="lab17" data-search="Carrossel de fotos arrays e índice Um carrossel é um ótimo exemplo de estado, arrays, eventos e manipulação do DOM.">
+<h2>17. Carrossel de fotos</h2><div class="concept">arrays e índice</div><p>Um carrossel é um ótimo exemplo de estado, arrays, eventos e manipulação do DOM.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Um carrossel é um ótimo exemplo de estado, arrays, eventos e manipulação do DOM.</p><div class="lab"><div class="carousel"><img id="carouselImg" src="https://picsum.photos/id/1015/900/500" alt="Foto do carrossel"><div class="carouselControls"><button class="actionBtn" id="prevPhoto">←</button><span id="fotoNum">1/4</span><button class="actionBtn" id="nextPhoto">→</button></div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;carousel&quot;&gt;&lt;img id=&quot;carouselImg&quot; src=&quot;https://picsum.photos/id/1015/900/500&quot; alt=&quot;Foto do carrossel&quot;&gt;&lt;div class=&quot;carouselControls&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;prevPhoto&quot;&gt;←&lt;/button&gt;&lt;span id=&quot;fotoNum&quot;&gt;1/4&lt;/span&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;nextPhoto&quot;&gt;→&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const fotos = [
+  &#x27;https://picsum.photos/id/1015/900/500&#x27;,
+  &#x27;https://picsum.photos/id/1016/900/500&#x27;,
+  &#x27;https://picsum.photos/id/1025/900/500&#x27;,
+  &#x27;https://picsum.photos/id/1035/900/500&#x27;
+];
+let fotoAtual = 0;
+const foto = document.querySelector(&#x27;#carouselImg&#x27;);
+function mostrarFoto() { foto.src = fotos[fotoAtual]; document.querySelector(&#x27;#fotoNum&#x27;).textContent = `${fotoAtual+1}/${fotos.length}`; }
+document.querySelector(&#x27;#nextPhoto&#x27;).onclick = () =&gt; { fotoAtual = (fotoAtual + 1) % fotos.length; mostrarFoto(); };
+document.querySelector(&#x27;#prevPhoto&#x27;).onclick = () =&gt; { fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length; mostrarFoto(); };
+mostrarFoto();</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Troque as imagens por fotos de uma pasta local e faça o carrossel avançar automaticamente.</div></section><section class="chapter" id="lab18" data-search="Arrastar elemento pointer events Eventos de ponteiro permitem criar interações de arrastar e soltar.">
+<h2>18. Arrastar elemento</h2><div class="concept">pointer events</div><p>Eventos de ponteiro permitem criar interações de arrastar e soltar.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Eventos de ponteiro permitem criar interações de arrastar e soltar.</p><div class="lab"><div class="dragStage"><div id="dragCard" class="dragCard">Arraste-me</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;dragStage&quot;&gt;&lt;div id=&quot;dragCard&quot; class=&quot;dragCard&quot;&gt;Arraste-me&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const drag = document.querySelector(&#x27;#dragCard&#x27;);
+drag.addEventListener(&#x27;pointerdown&#x27;, e =&gt; {
+  drag.setPointerCapture(e.pointerId);
+  drag.dataset.offset = e.clientX - drag.offsetLeft;
+});
+drag.addEventListener(&#x27;pointermove&#x27;, e =&gt; {
+  if (drag.hasPointerCapture(e.pointerId)) {
+    drag.style.left = (e.clientX - Number(drag.dataset.offset)) + &#x27;px&#x27;;
+  }
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Faça o elemento mudar de cor quando estiver sendo arrastado.</div></section><section class="chapter" id="lab19" data-search="Teclado keydown JavaScript também pode reagir às teclas pressionadas.">
+<h2>19. Teclado</h2><div class="concept">keydown</div><p>JavaScript também pode reagir às teclas pressionadas.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JavaScript também pode reagir às teclas pressionadas.</p><div class="lab"><div class="demoOutput" id="keyResult">Pressione uma tecla.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;demoOutput&quot; id=&quot;keyResult&quot;&gt;Pressione uma tecla.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.addEventListener(&#x27;keydown&#x27;, e =&gt; {
+  document.querySelector(&#x27;#keyResult&#x27;).textContent = `Tecla pressionada: ${e.key}`;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>teclado</strong>.</div></section><section class="chapter" id="lab20" data-search="Mouse mousemove Eventos do mouse permitem criar efeitos que acompanham o cursor.">
+<h2>20. Mouse</h2><div class="concept">mousemove</div><p>Eventos do mouse permitem criar efeitos que acompanham o cursor.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Eventos do mouse permitem criar efeitos que acompanham o cursor.</p><div class="lab"><div class="mouseArea" id="mouseArea">Mova o mouse aqui<div id="mouseResult">X: 0% | Y: 0%</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;mouseArea&quot; id=&quot;mouseArea&quot;&gt;Mova o mouse aqui&lt;div id=&quot;mouseResult&quot;&gt;X: 0% | Y: 0%&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const area = document.querySelector(&#x27;#mouseArea&#x27;);
+area.addEventListener(&#x27;mousemove&#x27;, e =&gt; {
+  const r = area.getBoundingClientRect();
+  const x = ((e.clientX-r.left)/r.width*100).toFixed(0);
+  const y = ((e.clientY-r.top)/r.height*100).toFixed(0);
+  document.querySelector(&#x27;#mouseResult&#x27;).textContent = `X: ${x}% | Y: ${y}%`;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>mouse</strong>.</div></section><section class="chapter" id="lab21" data-search="Criar elementos createElement JavaScript pode criar novos elementos HTML sem que eles existam inicialmente no documento.">
+<h2>21. Criar elementos</h2><div class="concept">createElement</div><p>JavaScript pode criar novos elementos HTML sem que eles existam inicialmente no documento.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JavaScript pode criar novos elementos HTML sem que eles existam inicialmente no documento.</p><div class="lab"><button class="actionBtn" id="addItem">Adicionar</button><div id="generatedList"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;addItem&quot;&gt;Adicionar&lt;/button&gt;&lt;div id=&quot;generatedList&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let item = 1;
+document.querySelector(&#x27;#addItem&#x27;).onclick = () =&gt; {
+  const card = document.createElement(&#x27;div&#x27;);
+  card.className = &#x27;generated&#x27;;
+  card.textContent = `Novo elemento ${item++}`;
+  document.querySelector(&#x27;#generatedList&#x27;).append(card);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>criar elementos</strong>.</div></section><section class="chapter" id="lab22" data-search="Remover elementos remove Também podemos retirar elementos do DOM.">
+<h2>22. Remover elementos</h2><div class="concept">remove</div><p>Também podemos retirar elementos do DOM.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Também podemos retirar elementos do DOM.</p><div class="lab"><div class="removable removeItem">Clique para remover 1</div><div class="removable removeItem">Clique para remover 2</div><div class="removable removeItem">Clique para remover 3</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;removable removeItem&quot;&gt;Clique para remover 1&lt;/div&gt;&lt;div class=&quot;removable removeItem&quot;&gt;Clique para remover 2&lt;/div&gt;&lt;div class=&quot;removable removeItem&quot;&gt;Clique para remover 3&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelectorAll(&#x27;.removeItem&#x27;).forEach(item =&gt; {
+  item.onclick = () =&gt; item.remove();
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>remover elementos</strong>.</div></section><section class="chapter" id="lab23" data-search="Lista de tarefas arrays + DOM Uma pequena lista de tarefas reúne entrada, arrays, eventos e atualização da interface.">
+<h2>23. Lista de tarefas</h2><div class="concept">arrays + DOM</div><p>Uma pequena lista de tarefas reúne entrada, arrays, eventos e atualização da interface.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Uma pequena lista de tarefas reúne entrada, arrays, eventos e atualização da interface.</p><div class="lab"><input class="demoInput" id="taskInput" placeholder="Ex.: Estudar eventos"><button class="actionBtn" id="addTask">Adicionar tarefa</button><ul id="taskList" class="taskList"></ul></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;taskInput&quot; placeholder=&quot;Ex.: Estudar eventos&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;addTask&quot;&gt;Adicionar tarefa&lt;/button&gt;&lt;ul id=&quot;taskList&quot; class=&quot;taskList&quot;&gt;&lt;/ul&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const tasks = [];
+const input = document.querySelector(&#x27;#taskInput&#x27;);
+const list = document.querySelector(&#x27;#taskList&#x27;);
+
+document.querySelector(&#x27;#addTask&#x27;).onclick = () =&gt; {
+  if (!input.value.trim()) return;
+  tasks.push(input.value.trim());
+  input.value = &#x27;&#x27;;
+  renderTasks();
+};
+
+function renderTasks() {
+  list.innerHTML = &#x27;&#x27;;
+  tasks.forEach((t, i) =&gt; {
+    const li = document.createElement(&#x27;li&#x27;);
+    li.textContent = t + &#x27; &#x27;;
+    const btn = document.createElement(&#x27;button&#x27;);
+    btn.textContent = &#x27;×&#x27;;
+    btn.onclick = () =&gt; { tasks.splice(i, 1); renderTasks(); };
+    li.append(btn);
+    list.append(li);
+  });
+}</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Adicione uma opção para marcar uma tarefa como concluída.</div></section><section class="chapter" id="lab24" data-search="Filtro de lista filter O método filter permite mostrar apenas itens que atendem a uma condição.">
+<h2>24. Filtro de lista</h2><div class="concept">filter</div><p>O método filter permite mostrar apenas itens que atendem a uma condição.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>O método filter permite mostrar apenas itens que atendem a uma condição.</p><div class="lab"><input class="demoInput" id="filterInput" placeholder="Filtrar produtos"><ul id="productList" class="taskList"><li>Mouse</li><li>Teclado</li><li>Monitor</li><li>Webcam</li><li>Headset</li></ul></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;filterInput&quot; placeholder=&quot;Filtrar produtos&quot;&gt;&lt;ul id=&quot;productList&quot; class=&quot;taskList&quot;&gt;&lt;li&gt;Mouse&lt;/li&gt;&lt;li&gt;Teclado&lt;/li&gt;&lt;li&gt;Monitor&lt;/li&gt;&lt;li&gt;Webcam&lt;/li&gt;&lt;li&gt;Headset&lt;/li&gt;&lt;/ul&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const produtos = [&#x27;Mouse&#x27;,&#x27;Teclado&#x27;,&#x27;Monitor&#x27;,&#x27;Webcam&#x27;,&#x27;Headset&#x27;];
+document.querySelector(&#x27;#filterInput&#x27;).oninput = e =&gt; {
+  const termo = e.target.value.toLowerCase();
+  document.querySelector(&#x27;#productList&#x27;).innerHTML =
+    produtos.filter(p =&gt; p.toLowerCase().includes(termo)).map(p =&gt; `&lt;li&gt;${p}&lt;/li&gt;`).join(&#x27;&#x27;);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>filtro de lista</strong>.</div></section><section class="chapter" id="lab25" data-search="Ordenar itens sort Arrays podem ser ordenados para alterar a apresentação dos dados.">
+<h2>25. Ordenar itens</h2><div class="concept">sort</div><p>Arrays podem ser ordenados para alterar a apresentação dos dados.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Arrays podem ser ordenados para alterar a apresentação dos dados.</p><div class="lab"><button class="actionBtn" id="sortBtn">Ordenar</button><div class="demoOutput" id="sortResult">8 • 2 • 15 • 4 • 10</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;sortBtn&quot;&gt;Ordenar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;sortResult&quot;&gt;8 • 2 • 15 • 4 • 10&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const numeros = [8, 2, 15, 4, 10];
+document.querySelector(&#x27;#sortBtn&#x27;).onclick = () =&gt; {
+  numeros.sort((a,b) =&gt; a-b);
+  document.querySelector(&#x27;#sortResult&#x27;).textContent = numeros.join(&#x27; • &#x27;);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>ordenar itens</strong>.</div></section><section class="chapter" id="lab26" data-search="Pesquisar com find find O método find retorna o primeiro item que satisfaz uma condição.">
+<h2>26. Pesquisar com find</h2><div class="concept">find</div><p>O método find retorna o primeiro item que satisfaz uma condição.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>O método find retorna o primeiro item que satisfaz uma condição.</p><div class="lab"><input class="demoInput" id="findInput" placeholder="Mouse, Teclado..."><button class="actionBtn" id="findBtn">Pesquisar</button><div class="demoOutput" id="findResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;findInput&quot; placeholder=&quot;Mouse, Teclado...&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;findBtn&quot;&gt;Pesquisar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;findResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const catalogo = [{nome:&#x27;Mouse&#x27;,preco:50},{nome:&#x27;Teclado&#x27;,preco:120},{nome:&#x27;Monitor&#x27;,preco:900}];
+document.querySelector(&#x27;#findBtn&#x27;).onclick = () =&gt; {
+  const termo = document.querySelector(&#x27;#findInput&#x27;).value.toLowerCase();
+  const achado = catalogo.find(p =&gt; p.nome.toLowerCase().includes(termo));
+  document.querySelector(&#x27;#findResult&#x27;).textContent = achado ? `${achado.nome}: R$ ${achado.preco}` : &#x27;Não encontrado.&#x27;;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>pesquisar com find</strong>.</div></section><section class="chapter" id="lab27" data-search="Somar dados reduce reduce transforma vários valores em um único resultado.">
+<h2>27. Somar dados</h2><div class="concept">reduce</div><p>reduce transforma vários valores em um único resultado.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>reduce transforma vários valores em um único resultado.</p><div class="lab"><div class="demoOutput" id="reduceResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;demoOutput&quot; id=&quot;reduceResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const valores = [10, 20, 30, 40];
+const total = valores.reduce((soma, valor) =&gt; soma + valor, 0);
+document.querySelector(&#x27;#reduceResult&#x27;).textContent = `Total: ${total}`;</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>somar dados</strong>.</div></section><section class="chapter" id="lab28" data-search="Formulário submit O evento submit permite controlar o envio de formulários com JavaScript.">
+<h2>28. Formulário</h2><div class="concept">submit</div><p>O evento submit permite controlar o envio de formulários com JavaScript.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>O evento submit permite controlar o envio de formulários com JavaScript.</p><div class="lab"><form id="demoForm"><input class="demoInput" name="nome" required placeholder="Seu nome"><button class="actionBtn">Enviar</button></form><div class="demoOutput" id="formResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;form id=&quot;demoForm&quot;&gt;&lt;input class=&quot;demoInput&quot; name=&quot;nome&quot; required placeholder=&quot;Seu nome&quot;&gt;&lt;button class=&quot;actionBtn&quot;&gt;Enviar&lt;/button&gt;&lt;/form&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;formResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#demoForm&#x27;).onsubmit = e =&gt; {
+  e.preventDefault();
+  const nome = new FormData(e.target).get(&#x27;nome&#x27;);
+  document.querySelector(&#x27;#formResult&#x27;).textContent = `Olá, ${nome}! O envio foi interceptado pelo JavaScript.`;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>formulário</strong>.</div></section><section class="chapter" id="lab29" data-search="Validação validity A validação pode impedir dados incorretos antes de serem enviados.">
+<h2>29. Validação</h2><div class="concept">validity</div><p>A validação pode impedir dados incorretos antes de serem enviados.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>A validação pode impedir dados incorretos antes de serem enviados.</p><div class="lab"><input class="demoInput" id="emailDemo" type="email" placeholder="seu@email.com"><div class="demoOutput" id="emailMsg">Digite um e-mail.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;emailDemo&quot; type=&quot;email&quot; placeholder=&quot;seu@email.com&quot;&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;emailMsg&quot;&gt;Digite um e-mail.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#emailDemo&#x27;).oninput = e =&gt; {
+  const msg = document.querySelector(&#x27;#emailMsg&#x27;);
+  msg.textContent = e.target.validity.valid ? &#x27;✓ E-mail com formato válido.&#x27; : &#x27;Digite um e-mail válido.&#x27;;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>validação</strong>.</div></section><section class="chapter" id="lab30" data-search="localStorage persistência localStorage permite guardar pequenas informações no navegador.">
+<h2>30. localStorage</h2><div class="concept">persistência</div><p>localStorage permite guardar pequenas informações no navegador.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>localStorage permite guardar pequenas informações no navegador.</p><div class="lab"><input class="demoInput" id="storageInput" placeholder="Ex.: tema azul"><button class="actionBtn" id="saveStorage">Salvar</button><button class="actionBtn" id="clearStorage">Limpar</button><div class="demoOutput" id="storageResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;demoInput&quot; id=&quot;storageInput&quot; placeholder=&quot;Ex.: tema azul&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;saveStorage&quot;&gt;Salvar&lt;/button&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;clearStorage&quot;&gt;Limpar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;storageResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const pref = document.querySelector(&#x27;#storageInput&#x27;);
+const saved = localStorage.getItem(&#x27;preferencia-js&#x27;);
+if (saved) pref.value = saved;
+document.querySelector(&#x27;#saveStorage&#x27;).onclick = () =&gt; {
+  localStorage.setItem(&#x27;preferencia-js&#x27;, pref.value);
+  document.querySelector(&#x27;#storageResult&#x27;).textContent = &#x27;Preferência salva no navegador.&#x27;;
+};
+document.querySelector(&#x27;#clearStorage&#x27;).onclick = () =&gt; {
+  localStorage.removeItem(&#x27;preferencia-js&#x27;);
+  pref.value = &#x27;&#x27;;
+  document.querySelector(&#x27;#storageResult&#x27;).textContent = &#x27;Preferência removida.&#x27;;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Crie um seletor de tema e salve a escolha no localStorage.</div></section><section class="chapter" id="lab31" data-search="sessionStorage sessão sessionStorage guarda dados durante a sessão da aba.">
+<h2>31. sessionStorage</h2><div class="concept">sessão</div><p>sessionStorage guarda dados durante a sessão da aba.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>sessionStorage guarda dados durante a sessão da aba.</p><div class="lab"><div class="demoOutput" id="sessionResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;demoOutput&quot; id=&quot;sessionResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let visitas = Number(sessionStorage.getItem(&#x27;visitas&#x27;) || 0) + 1;
+sessionStorage.setItem(&#x27;visitas&#x27;, visitas);
+document.querySelector(&#x27;#sessionResult&#x27;).textContent = `Visitas nesta sessão: ${visitas}`;</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>sessionstorage</strong>.</div></section><section class="chapter" id="lab32" data-search="JSON dados estruturados JSON é um formato comum para representar e trocar dados.">
+<h2>32. JSON</h2><div class="concept">dados estruturados</div><p>JSON é um formato comum para representar e trocar dados.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JSON é um formato comum para representar e trocar dados.</p><div class="lab"><div class="demoOutput codeLike" id="jsonResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;demoOutput codeLike&quot; id=&quot;jsonResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const aluno = {nome:&#x27;Ana&#x27;, idade:17, curso:&#x27;Informática&#x27;};
+const texto = JSON.stringify(aluno);
+const objeto = JSON.parse(texto);
+document.querySelector(&#x27;#jsonResult&#x27;).textContent = texto + &#x27; → &#x27; + objeto.nome;</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>json</strong>.</div></section><section class="chapter" id="lab33" data-search="setTimeout tempo setTimeout agenda uma função para acontecer depois de um intervalo.">
+<h2>33. setTimeout</h2><div class="concept">tempo</div><p>setTimeout agenda uma função para acontecer depois de um intervalo.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>setTimeout agenda uma função para acontecer depois de um intervalo.</p><div class="lab"><button class="actionBtn" id="timeoutBtn">Iniciar</button><div class="demoOutput" id="timeoutResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;timeoutBtn&quot;&gt;Iniciar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;timeoutResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#timeoutBtn&#x27;).onclick = () =&gt; {
+  const out = document.querySelector(&#x27;#timeoutResult&#x27;);
+  out.textContent = &#x27;Aguardando...&#x27;;
+  setTimeout(() =&gt; out.textContent = &#x27;Passaram-se 2 segundos!&#x27;, 2000);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>settimeout</strong>.</div></section><section class="chapter" id="lab34" data-search="setInterval intervalo setInterval executa uma função repetidamente até ser interrompida.">
+<h2>34. setInterval</h2><div class="concept">intervalo</div><p>setInterval executa uma função repetidamente até ser interrompida.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>setInterval executa uma função repetidamente até ser interrompida.</p><div class="lab"><button class="actionBtn" id="startInterval">Iniciar</button><button class="actionBtn" id="stopInterval">Parar</button><div class="bigNumber" id="intervalResult">0</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;startInterval&quot;&gt;Iniciar&lt;/button&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;stopInterval&quot;&gt;Parar&lt;/button&gt;&lt;div class=&quot;bigNumber&quot; id=&quot;intervalResult&quot;&gt;0&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let timer, segundos = 0;
+document.querySelector(&#x27;#startInterval&#x27;).onclick = () =&gt; {
+  if (timer) return;
+  timer = setInterval(() =&gt; {
+    document.querySelector(&#x27;#intervalResult&#x27;).textContent = ++segundos;
+  }, 1000);
+};
+document.querySelector(&#x27;#stopInterval&#x27;).onclick = () =&gt; { clearInterval(timer); timer = null; };</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>setinterval</strong>.</div></section><section class="chapter" id="lab35" data-search="Promise assíncrono Promises representam operações que podem terminar depois.">
+<h2>35. Promise</h2><div class="concept">assíncrono</div><p>Promises representam operações que podem terminar depois.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Promises representam operações que podem terminar depois.</p><div class="lab"><button class="actionBtn" id="promiseBtn">Executar</button><div class="demoOutput" id="promiseResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;promiseBtn&quot;&gt;Executar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;promiseResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">function carregar() {
+  return new Promise(resolve =&gt; setTimeout(() =&gt; resolve(&#x27;Dados recebidos!&#x27;), 1500));
+}
+document.querySelector(&#x27;#promiseBtn&#x27;).onclick = async () =&gt; {
+  document.querySelector(&#x27;#promiseResult&#x27;).textContent = &#x27;Carregando...&#x27;;
+  document.querySelector(&#x27;#promiseResult&#x27;).textContent = await carregar();
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>promise</strong>.</div></section><section class="chapter" id="lab36" data-search="async/await assíncrono legível async/await torna código assíncrono mais fácil de ler.">
+<h2>36. async/await</h2><div class="concept">assíncrono legível</div><p>async/await torna código assíncrono mais fácil de ler.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>async/await torna código assíncrono mais fácil de ler.</p><div class="lab"><button class="actionBtn" id="awaitBtn">Executar</button><div class="demoOutput" id="awaitResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;awaitBtn&quot;&gt;Executar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;awaitResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">async function exemplo() {
+  const resposta = await new Promise(r =&gt; setTimeout(() =&gt; r(&#x27;Processo concluído.&#x27;), 1000));
+  return resposta;
+}
+document.querySelector(&#x27;#awaitBtn&#x27;).onclick = async () =&gt; {
+  document.querySelector(&#x27;#awaitResult&#x27;).textContent = await exemplo();
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>async/await</strong>.</div></section><section class="chapter" id="lab37" data-search="Fetch API requisições fetch permite buscar dados de recursos HTTP no navegador.">
+<h2>37. Fetch API</h2><div class="concept">requisições</div><p>fetch permite buscar dados de recursos HTTP no navegador.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>fetch permite buscar dados de recursos HTTP no navegador.</p><div class="lab"><button class="actionBtn" id="fetchBtn">Consultar API</button><pre class="demoOutput codeLike" id="fetchResult"></pre></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;fetchBtn&quot;&gt;Consultar API&lt;/button&gt;&lt;pre class=&quot;demoOutput codeLike&quot; id=&quot;fetchResult&quot;&gt;&lt;/pre&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#fetchBtn&#x27;).onclick = async () =&gt; {
+  const out = document.querySelector(&#x27;#fetchResult&#x27;);
+  out.textContent = &#x27;Consultando...&#x27;;
+  try {
+    const r = await fetch(&#x27;https://jsonplaceholder.typicode.com/todos/1&#x27;);
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  } catch (e) { out.textContent = &#x27;Erro de rede.&#x27;; }
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Mostre apenas dois campos do JSON retornado.</div></section><section class="chapter" id="lab38" data-search="Tratamento de erros try/catch Erros esperados devem ser tratados para que a interface não quebre silenciosamente.">
+<h2>38. Tratamento de erros</h2><div class="concept">try/catch</div><p>Erros esperados devem ser tratados para que a interface não quebre silenciosamente.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Erros esperados devem ser tratados para que a interface não quebre silenciosamente.</p><div class="lab"><button class="actionBtn" id="errorBtn">Provocar erro controlado</button><div class="demoOutput" id="errorResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;errorBtn&quot;&gt;Provocar erro controlado&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;errorResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#errorBtn&#x27;).onclick = () =&gt; {
+  try {
+    JSON.parse(&#x27;isto não é JSON&#x27;);
+  } catch (erro) {
+    document.querySelector(&#x27;#errorResult&#x27;).textContent = &#x27;Erro capturado: &#x27; + erro.name;
+  }
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>tratamento de erros</strong>.</div></section><section class="chapter" id="lab39" data-search="Tema persistente localStorage + classes Podemos lembrar a escolha do tema do usuário.">
+<h2>39. Tema persistente</h2><div class="concept">localStorage + classes</div><p>Podemos lembrar a escolha do tema do usuário.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Podemos lembrar a escolha do tema do usuário.</p><div class="lab"><div id="persistentTheme" class="themeArea"><strong>Tema persistente</strong><p>A escolha fica salva no navegador.</p></div><button class="actionBtn" id="persistentThemeBtn">Trocar tema</button></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div id=&quot;persistentTheme&quot; class=&quot;themeArea&quot;&gt;&lt;strong&gt;Tema persistente&lt;/strong&gt;&lt;p&gt;A escolha fica salva no navegador.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;persistentThemeBtn&quot;&gt;Trocar tema&lt;/button&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const area = document.querySelector(&#x27;#persistentTheme&#x27;);
+let escuro = localStorage.getItem(&#x27;tema-demo&#x27;) === &#x27;escuro&#x27;;
+function renderTheme(){ area.classList.toggle(&#x27;demo-dark&#x27;, escuro); }
+document.querySelector(&#x27;#persistentThemeBtn&#x27;).onclick = () =&gt; {
+  escuro = !escuro; localStorage.setItem(&#x27;tema-demo&#x27;, escuro ? &#x27;escuro&#x27; : &#x27;claro&#x27;); renderTheme();
+};
+renderTheme();</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>tema persistente</strong>.</div></section><section class="chapter" id="lab40" data-search="Barra de progresso scroll A posição do scroll pode controlar uma barra visual.">
+<h2>40. Barra de progresso</h2><div class="concept">scroll</div><p>A posição do scroll pode controlar uma barra visual.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>A posição do scroll pode controlar uma barra visual.</p><div class="lab"><div class="demoOutput">Role a página. A barra superior mostra o progresso geral.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;demoOutput&quot;&gt;Role a página. A barra superior mostra o progresso geral.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">window.addEventListener(&#x27;scroll&#x27;, () =&gt; {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const pct = max ? scrollY / max * 100 : 0;
+  document.querySelector(&#x27;#demoProgress&#x27;).style.width = pct + &#x27;%&#x27;;
+});</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>barra de progresso</strong>.</div></section><section class="chapter" id="lab41" data-search="IntersectionObserver visibilidade IntersectionObserver detecta quando um elemento entra na área visível.">
+<h2>41. IntersectionObserver</h2><div class="concept">visibilidade</div><p>IntersectionObserver detecta quando um elemento entra na área visível.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>IntersectionObserver detecta quando um elemento entra na área visível.</p><div class="lab"><div class="observeSpace"></div><div id="observeBox" class="observeBox">Eu apareci na tela!</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;observeSpace&quot;&gt;&lt;/div&gt;&lt;div id=&quot;observeBox&quot; class=&quot;observeBox&quot;&gt;Eu apareci na tela!&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const obs = new IntersectionObserver(entries =&gt; {
+  entries.forEach(entry =&gt; entry.target.classList.toggle(&#x27;visible&#x27;, entry.isIntersecting));
+});
+obs.observe(document.querySelector(&#x27;#observeBox&#x27;));</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Faça o elemento entrar com uma animação diferente.</div></section><section class="chapter" id="lab42" data-search="Contagem regressiva Date e intervalos Combinar datas e intervalos permite criar contadores e cronômetros.">
+<h2>42. Contagem regressiva</h2><div class="concept">Date e intervalos</div><p>Combinar datas e intervalos permite criar contadores e cronômetros.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Combinar datas e intervalos permite criar contadores e cronômetros.</p><div class="lab"><button class="actionBtn" id="startCountdown">Começar</button><div class="bigNumber" id="countdownResult">10.0s</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;startCountdown&quot;&gt;Começar&lt;/button&gt;&lt;div class=&quot;bigNumber&quot; id=&quot;countdownResult&quot;&gt;10.0s&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let fim;
+document.querySelector(&#x27;#startCountdown&#x27;).onclick = () =&gt; {
+  fim = Date.now() + 10000;
+  const id = setInterval(() =&gt; {
+    const restante = Math.max(0, fim-Date.now());
+    document.querySelector(&#x27;#countdownResult&#x27;).textContent = (restante/1000).toFixed(1)+&#x27;s&#x27;;
+    if (!restante) clearInterval(id);
+  }, 100);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>contagem regressiva</strong>.</div></section><section class="chapter" id="lab43" data-search="Número aleatório Math.random Math.random pode gerar valores pseudoaleatórios para jogos, sorteios e efeitos.">
+<h2>43. Número aleatório</h2><div class="concept">Math.random</div><p>Math.random pode gerar valores pseudoaleatórios para jogos, sorteios e efeitos.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Math.random pode gerar valores pseudoaleatórios para jogos, sorteios e efeitos.</p><div class="lab"><button class="actionBtn" id="randomBtn">Sortear</button><div class="bigNumber" id="randomResult">?</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;randomBtn&quot;&gt;Sortear&lt;/button&gt;&lt;div class=&quot;bigNumber&quot; id=&quot;randomResult&quot;&gt;?&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#randomBtn&#x27;).onclick = () =&gt; {
+  const n = Math.floor(Math.random()*100)+1;
+  document.querySelector(&#x27;#randomResult&#x27;).textContent = n;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>número aleatório</strong>.</div></section><section class="chapter" id="lab44" data-search="Gerador de senha arrays e randomização Uma interface pode combinar caracteres para produzir uma senha aleatória de exemplo.">
+<h2>44. Gerador de senha</h2><div class="concept">arrays e randomização</div><p>Uma interface pode combinar caracteres para produzir uma senha aleatória de exemplo.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Uma interface pode combinar caracteres para produzir uma senha aleatória de exemplo.</p><div class="lab"><button class="actionBtn" id="passwordBtn">Gerar</button><div class="demoOutput codeLike" id="passwordResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;button class=&quot;actionBtn&quot; id=&quot;passwordBtn&quot;&gt;Gerar&lt;/button&gt;&lt;div class=&quot;demoOutput codeLike&quot; id=&quot;passwordResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const chars = &#x27;ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&#x27;;
+document.querySelector(&#x27;#passwordBtn&#x27;).onclick = () =&gt; {
+  let senha=&#x27;&#x27;;
+  for(let i=0;i&lt;12;i++) senha += chars[Math.floor(Math.random()*chars.length)];
+  document.querySelector(&#x27;#passwordResult&#x27;).textContent = senha;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>gerador de senha</strong>.</div></section><section class="chapter" id="lab45" data-search="Tooltip hover + DOM Informações complementares podem aparecer quando o usuário passa o mouse.">
+<h2>45. Tooltip</h2><div class="concept">hover + DOM</div><p>Informações complementares podem aparecer quando o usuário passa o mouse.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Informações complementares podem aparecer quando o usuário passa o mouse.</p><div class="lab"><div class="tooltipTarget" id="tipTarget">Passe o mouse aqui<div id="tipBox" class="tooltipBox">Informação extra!</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;tooltipTarget&quot; id=&quot;tipTarget&quot;&gt;Passe o mouse aqui&lt;div id=&quot;tipBox&quot; class=&quot;tooltipBox&quot;&gt;Informação extra!&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">const tip = document.querySelector(&#x27;#tipTarget&#x27;);
+tip.onmouseenter = () =&gt; document.querySelector(&#x27;#tipBox&#x27;).classList.add(&#x27;show&#x27;);
+tip.onmouseleave = () =&gt; document.querySelector(&#x27;#tipBox&#x27;).classList.remove(&#x27;show&#x27;);</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>tooltip</strong>.</div></section><section class="chapter" id="lab46" data-search="Modo foco interface JavaScript pode modificar a interface para destacar uma tarefa específica.">
+<h2>46. Modo foco</h2><div class="concept">interface</div><p>JavaScript pode modificar a interface para destacar uma tarefa específica.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>JavaScript pode modificar a interface para destacar uma tarefa específica.</p><div class="lab"><div class="focusArea" id="focusArea"><h3>Conteúdo</h3><p>O modo foco reduz distrações visuais.</p><button class="actionBtn" id="focusBtn">Modo foco</button></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;div class=&quot;focusArea&quot; id=&quot;focusArea&quot;&gt;&lt;h3&gt;Conteúdo&lt;/h3&gt;&lt;p&gt;O modo foco reduz distrações visuais.&lt;/p&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;focusBtn&quot;&gt;Modo foco&lt;/button&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#focusBtn&#x27;).onclick = () =&gt; {
+  document.querySelector(&#x27;#focusArea&#x27;).classList.toggle(&#x27;focus-mode&#x27;);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>modo foco</strong>.</div></section><section class="chapter" id="lab47" data-search="Paleta de cores inputs + CSS variables CSS custom properties podem ser alteradas diretamente pelo JavaScript.">
+<h2>47. Paleta de cores</h2><div class="concept">inputs + CSS variables</div><p>CSS custom properties podem ser alteradas diretamente pelo JavaScript.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>CSS custom properties podem ser alteradas diretamente pelo JavaScript.</p><div class="lab"><input id="palettePicker" type="color" value="#8b5cf6"><div class="paletteArea" id="paletteArea">Minha cor usa uma variável CSS.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input id=&quot;palettePicker&quot; type=&quot;color&quot; value=&quot;#8b5cf6&quot;&gt;&lt;div class=&quot;paletteArea&quot; id=&quot;paletteArea&quot;&gt;Minha cor usa uma variável CSS.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#palettePicker&#x27;).oninput = e =&gt; {
+  document.querySelector(&#x27;#paletteArea&#x27;).style.setProperty(&#x27;--demo-color&#x27;, e.target.value);
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>paleta de cores</strong>.</div></section><section class="chapter" id="lab48" data-search="Transformações scale/rotate Transformações CSS permitem criar efeitos de escala e rotação sem alterar o fluxo normal.">
+<h2>48. Transformações</h2><div class="concept">scale/rotate</div><p>Transformações CSS permitem criar efeitos de escala e rotação sem alterar o fluxo normal.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Transformações CSS permitem criar efeitos de escala e rotação sem alterar o fluxo normal.</p><div class="lab"><label>Escala <input id="scaleRange" type="range" min=".5" max="1.5" step=".1" value="1"></label> <label>Rotação <input id="rotateRange" type="range" min="-180" max="180" value="0"></label><div class="transformStage"><div id="transformBox" class="transformBox">Transforme</div></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;label&gt;Escala &lt;input id=&quot;scaleRange&quot; type=&quot;range&quot; min=&quot;.5&quot; max=&quot;1.5&quot; step=&quot;.1&quot; value=&quot;1&quot;&gt;&lt;/label&gt; &lt;label&gt;Rotação &lt;input id=&quot;rotateRange&quot; type=&quot;range&quot; min=&quot;-180&quot; max=&quot;180&quot; value=&quot;0&quot;&gt;&lt;/label&gt;&lt;div class=&quot;transformStage&quot;&gt;&lt;div id=&quot;transformBox&quot; class=&quot;transformBox&quot;&gt;Transforme&lt;/div&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">function transformDemo(){
+  const s=document.querySelector(&#x27;#scaleRange&#x27;).value;
+  const r=document.querySelector(&#x27;#rotateRange&#x27;).value;
+  document.querySelector(&#x27;#transformBox&#x27;).style.transform=`scale(${s}) rotate(${r}deg)`;
+}
+document.querySelector(&#x27;#scaleRange&#x27;).oninput=transformDemo;
+document.querySelector(&#x27;#rotateRange&#x27;).oninput=transformDemo;</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Altere o exemplo para criar uma variação do efeito de <strong>transformações</strong>.</div></section><section class="chapter" id="lab49" data-search="Mini calculadora funções + eventos Uma calculadora reúne entrada, conversão de tipos, funções e eventos.">
+<h2>49. Mini calculadora</h2><div class="concept">funções + eventos</div><p>Uma calculadora reúne entrada, conversão de tipos, funções e eventos.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Uma calculadora reúne entrada, conversão de tipos, funções e eventos.</p><div class="lab"><input class="smallInput" id="calcA" type="number" value="10"><select id="calcOp"><option>+</option><option>-</option><option>*</option><option>/</option></select><input class="smallInput" id="calcB" type="number" value="5"><button class="actionBtn" id="calcBtn">Calcular</button><div class="demoOutput" id="calcResult"></div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;smallInput&quot; id=&quot;calcA&quot; type=&quot;number&quot; value=&quot;10&quot;&gt;&lt;select id=&quot;calcOp&quot;&gt;&lt;option&gt;+&lt;/option&gt;&lt;option&gt;-&lt;/option&gt;&lt;option&gt;*&lt;/option&gt;&lt;option&gt;/&lt;/option&gt;&lt;/select&gt;&lt;input class=&quot;smallInput&quot; id=&quot;calcB&quot; type=&quot;number&quot; value=&quot;5&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;calcBtn&quot;&gt;Calcular&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;calcResult&quot;&gt;&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">document.querySelector(&#x27;#calcBtn&#x27;).onclick = () =&gt; {
+  const a = Number(document.querySelector(&#x27;#calcA&#x27;).value);
+  const b = Number(document.querySelector(&#x27;#calcB&#x27;).value);
+  const op = document.querySelector(&#x27;#calcOp&#x27;).value;
+  const r = op===&#x27;+&#x27;?a+b:op===&#x27;-&#x27;?a-b:op===&#x27;*&#x27;?a*b:a/b;
+  document.querySelector(&#x27;#calcResult&#x27;).textContent = `Resultado: ${r}`;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Adicione potenciação e porcentagem.</div></section><section class="chapter" id="lab50" data-search="Mini jogo estado + eventos Jogos simples são excelentes para aprender estado, condições, eventos e feedback.">
+<h2>50. Mini jogo</h2><div class="concept">estado + eventos</div><p>Jogos simples são excelentes para aprender estado, condições, eventos e feedback.</p>
+<div class="grid"><div class="grid"><div class="panel"><h3>🧪 Experimente</h3><p>Jogos simples são excelentes para aprender estado, condições, eventos e feedback.</p><div class="lab"><input class="smallInput" id="guess" type="number" min="1" max="10" placeholder="1-10"><button class="actionBtn" id="guessBtn">Tentar</button><div class="demoOutput" id="guessResult">Escolhi um número de 1 a 10.</div></div></div>
+<div class="panel"><h3>📍 Onde colocar no HTML?</h3><p>O elemento que será manipulado fica no <code>&lt;body&gt;</code>. O JavaScript abaixo fica dentro de <code>&lt;script&gt;</code>, normalmente antes de <code>&lt;/body&gt;</code>.</p><pre class="code htmlCode">&lt;input class=&quot;smallInput&quot; id=&quot;guess&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;10&quot; placeholder=&quot;1-10&quot;&gt;&lt;button class=&quot;actionBtn&quot; id=&quot;guessBtn&quot;&gt;Tentar&lt;/button&gt;&lt;div class=&quot;demoOutput&quot; id=&quot;guessResult&quot;&gt;Escolhi um número de 1 a 10.&lt;/div&gt;</pre><div class="codeWrap"><button class="copy">Copiar JS</button><pre class="code">let secreto = Math.floor(Math.random()*10)+1;
+document.querySelector(&#x27;#guessBtn&#x27;).onclick=()=&gt;{
+  const palpite=Number(document.querySelector(&#x27;#guess&#x27;).value);
+  const out=document.querySelector(&#x27;#guessResult&#x27;);
+  if(palpite===secreto){out.textContent=&#x27;🎉 Acertou! Novo número gerado.&#x27;; secreto=Math.floor(Math.random()*10)+1;}
+  else out.textContent=palpite&lt;secreto?&#x27;Tente um número maior.&#x27;:&#x27;Tente um número menor.&#x27;;
+};</pre></div></div></div></div></div>
+<div class="info"><strong>O que aconteceu?</strong> O JavaScript recebeu uma ação ou valor, encontrou elementos na página e alterou seu estado, conteúdo ou comportamento.</div>
+<div class="challenge"><strong>🎯 Desafio:</strong> Conte quantas tentativas o jogador fez.</div></section><section class="chapter"><h2>Projeto final — Painel Interativo</h2><p>Combine eventos, DOM, classes, arrays, formulários e armazenamento para criar um painel com menu, tema, contador, lista de tarefas, filtro e preferências.</p><div class="info"><strong>Regra do projeto:</strong> tente construir primeiro sem consultar os exemplos. Depois compare sua solução com os laboratórios anteriores.</div></section>
+<div class="footer">Manual Interativo de JavaScript para Front-End • página única • material didático</div></main></div>
+<script>document.querySelector('#themeBtn').onclick=()=>document.body.classList.toggle('light');
+document.querySelector('#search').oninput=e=>{
+ const q=e.target.value.toLowerCase();
+ document.querySelectorAll('.chapter').forEach(c=>c.style.display=(c.dataset.search||c.textContent).toLowerCase().includes(q)?'':'none');
+};
+window.addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;document.querySelector('#progress').style.width=(m?scrollY/m*100:0)+'%'});
+document.querySelectorAll('.copy').forEach(btn=>btn.onclick=async()=>{const code=btn.parentElement.querySelector('.code').innerText;try{await navigator.clipboard.writeText(code);btn.textContent='Copiado!';setTimeout(()=>btn.textContent='Copiar',1000)}catch(e){btn.textContent='Selecione e copie';}});
+{
+const botao = document.querySelector('#btnClick');
+botao.addEventListener('click', () => {
+  document.querySelector('#clickResult').textContent = 'Você clicou! O JavaScript respondeu ao evento.';
+});
+}
+{
+document.querySelector('#textSwap').addEventListener('click', () => {
+  document.querySelector('#dynamicText').textContent = 'O texto foi alterado pelo JavaScript!';
+});
+}
+{
+const cor = document.querySelector('#colorPicker');
+cor.addEventListener('input', () => {
+  document.querySelector('#colorCard').style.backgroundColor = cor.value;
+});
+}
+{
+let brilho = 100;
+function atualizarBrilho() {
+  document.querySelector('#brightnessBox').style.filter = `brightness(${brilho}%)`;
+}
+document.querySelector('#darken').onclick = () => { brilho = Math.max(30, brilho - 10); atualizarBrilho(); };
+document.querySelector('#lighten').onclick = () => { brilho = Math.min(160, brilho + 10); atualizarBrilho(); };
+}
+{
+let x = 0;
+document.querySelector('#moveRange').addEventListener('input', e => {
+  x = e.target.value;
+  document.querySelector('#moveBox').style.transform = `translateX(${x}px)`;
+});
+}
+{
+document.querySelector('#toggleBtn').addEventListener('click', () => {
+  document.querySelector('#secretBox').classList.toggle('hidden');
+});
+}
+{
+let contador = 0;
+const visor = document.querySelector('#counterValue');
+document.querySelector('#plus').onclick = () => visor.textContent = ++contador;
+document.querySelector('#minus').onclick = () => visor.textContent = --contador;
+document.querySelector('#zero').onclick = () => { contador = 0; visor.textContent = contador; };
+}
+{
+document.querySelector('#nameInput').addEventListener('input', e => {
+  document.querySelector('#namePreview').textContent = e.target.value || 'Seu nome aparecerá aqui';
+});
+}
+{
+document.querySelector('#sizeRange').addEventListener('input', e => {
+  document.querySelector('#sizeCircle').style.width = e.target.value + 'px';
+  document.querySelector('#sizeCircle').style.height = e.target.value + 'px';
+});
+}
+{
+document.querySelector('#themeDemo').onclick = () => {
+  document.querySelector('#themeArea').classList.toggle('demo-dark');
+};
+}
+{
+document.querySelector('#languageSelect').addEventListener('change', e => {
+  document.querySelector('#languageResult').textContent = `Você escolheu: ${e.target.value}`;
+});
+}
+{
+document.querySelectorAll('.pref').forEach(box => {
+  box.addEventListener('change', () => {
+    const ativos = [...document.querySelectorAll('.pref:checked')].map(x => x.value);
+    document.querySelector('#prefResult').textContent =
+      ativos.length ? 'Ativos: ' + ativos.join(', ') : 'Nenhuma preferência ativa.';
+  });
+});
+}
+{
+document.querySelector('#saveBtn').onclick = function() {
+  this.textContent = '✓ Salvo!';
+  this.classList.add('success');
+  setTimeout(() => {
+    this.textContent = 'Salvar';
+    this.classList.remove('success');
+  }, 1500);
+};
+}
+{
+const modal = document.querySelector('#modalDemo');
+document.querySelector('#openModal').onclick = () => modal.classList.add('show');
+document.querySelector('#closeModal').onclick = () => modal.classList.remove('show');
+}
+{
+document.querySelectorAll('.accHead').forEach(head => {
+  head.onclick = () => head.parentElement.classList.toggle('open');
+});
+}
+{
+document.querySelectorAll('.tabBtn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tabBtn,.tabPanel').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector('#' + btn.dataset.tab).classList.add('active');
+  };
+});
+}
+{
+const fotos = [
+  'https://picsum.photos/id/1015/900/500',
+  'https://picsum.photos/id/1016/900/500',
+  'https://picsum.photos/id/1025/900/500',
+  'https://picsum.photos/id/1035/900/500'
+];
+let fotoAtual = 0;
+const foto = document.querySelector('#carouselImg');
+function mostrarFoto() { foto.src = fotos[fotoAtual]; document.querySelector('#fotoNum').textContent = `${fotoAtual+1}/${fotos.length}`; }
+document.querySelector('#nextPhoto').onclick = () => { fotoAtual = (fotoAtual + 1) % fotos.length; mostrarFoto(); };
+document.querySelector('#prevPhoto').onclick = () => { fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length; mostrarFoto(); };
+mostrarFoto();
+}
+{
+const drag = document.querySelector('#dragCard');
+drag.addEventListener('pointerdown', e => {
+  drag.setPointerCapture(e.pointerId);
+  drag.dataset.offset = e.clientX - drag.offsetLeft;
+});
+drag.addEventListener('pointermove', e => {
+  if (drag.hasPointerCapture(e.pointerId)) {
+    drag.style.left = (e.clientX - Number(drag.dataset.offset)) + 'px';
+  }
+});
+}
+{
+document.addEventListener('keydown', e => {
+  document.querySelector('#keyResult').textContent = `Tecla pressionada: ${e.key}`;
+});
+}
+{
+const area = document.querySelector('#mouseArea');
+area.addEventListener('mousemove', e => {
+  const r = area.getBoundingClientRect();
+  const x = ((e.clientX-r.left)/r.width*100).toFixed(0);
+  const y = ((e.clientY-r.top)/r.height*100).toFixed(0);
+  document.querySelector('#mouseResult').textContent = `X: ${x}% | Y: ${y}%`;
+});
+}
+{
+let item = 1;
+document.querySelector('#addItem').onclick = () => {
+  const card = document.createElement('div');
+  card.className = 'generated';
+  card.textContent = `Novo elemento ${item++}`;
+  document.querySelector('#generatedList').append(card);
+};
+}
+{
+document.querySelectorAll('.removeItem').forEach(item => {
+  item.onclick = () => item.remove();
+});
+}
+{
+const tasks = [];
+const input = document.querySelector('#taskInput');
+const list = document.querySelector('#taskList');
+
+document.querySelector('#addTask').onclick = () => {
+  if (!input.value.trim()) return;
+  tasks.push(input.value.trim());
+  input.value = '';
+  renderTasks();
+};
+
+function renderTasks() {
+  list.innerHTML = '';
+  tasks.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.textContent = t + ' ';
+    const btn = document.createElement('button');
+    btn.textContent = '×';
+    btn.onclick = () => { tasks.splice(i, 1); renderTasks(); };
+    li.append(btn);
+    list.append(li);
+  });
+}
+}
+{
+const produtos = ['Mouse','Teclado','Monitor','Webcam','Headset'];
+document.querySelector('#filterInput').oninput = e => {
+  const termo = e.target.value.toLowerCase();
+  document.querySelector('#productList').innerHTML =
+    produtos.filter(p => p.toLowerCase().includes(termo)).map(p => `<li>${p}</li>`).join('');
+};
+}
+{
+const numeros = [8, 2, 15, 4, 10];
+document.querySelector('#sortBtn').onclick = () => {
+  numeros.sort((a,b) => a-b);
+  document.querySelector('#sortResult').textContent = numeros.join(' • ');
+};
+}
+{
+const catalogo = [{nome:'Mouse',preco:50},{nome:'Teclado',preco:120},{nome:'Monitor',preco:900}];
+document.querySelector('#findBtn').onclick = () => {
+  const termo = document.querySelector('#findInput').value.toLowerCase();
+  const achado = catalogo.find(p => p.nome.toLowerCase().includes(termo));
+  document.querySelector('#findResult').textContent = achado ? `${achado.nome}: R$ ${achado.preco}` : 'Não encontrado.';
+};
+}
+{
+const valores = [10, 20, 30, 40];
+const total = valores.reduce((soma, valor) => soma + valor, 0);
+document.querySelector('#reduceResult').textContent = `Total: ${total}`;
+}
+{
+document.querySelector('#demoForm').onsubmit = e => {
+  e.preventDefault();
+  const nome = new FormData(e.target).get('nome');
+  document.querySelector('#formResult').textContent = `Olá, ${nome}! O envio foi interceptado pelo JavaScript.`;
+};
+}
+{
+document.querySelector('#emailDemo').oninput = e => {
+  const msg = document.querySelector('#emailMsg');
+  msg.textContent = e.target.validity.valid ? '✓ E-mail com formato válido.' : 'Digite um e-mail válido.';
+};
+}
+{
+const pref = document.querySelector('#storageInput');
+const saved = localStorage.getItem('preferencia-js');
+if (saved) pref.value = saved;
+document.querySelector('#saveStorage').onclick = () => {
+  localStorage.setItem('preferencia-js', pref.value);
+  document.querySelector('#storageResult').textContent = 'Preferência salva no navegador.';
+};
+document.querySelector('#clearStorage').onclick = () => {
+  localStorage.removeItem('preferencia-js');
+  pref.value = '';
+  document.querySelector('#storageResult').textContent = 'Preferência removida.';
+};
+}
+{
+let visitas = Number(sessionStorage.getItem('visitas') || 0) + 1;
+sessionStorage.setItem('visitas', visitas);
+document.querySelector('#sessionResult').textContent = `Visitas nesta sessão: ${visitas}`;
+}
+{
+const aluno = {nome:'Ana', idade:17, curso:'Informática'};
+const texto = JSON.stringify(aluno);
+const objeto = JSON.parse(texto);
+document.querySelector('#jsonResult').textContent = texto + ' → ' + objeto.nome;
+}
+{
+document.querySelector('#timeoutBtn').onclick = () => {
+  const out = document.querySelector('#timeoutResult');
+  out.textContent = 'Aguardando...';
+  setTimeout(() => out.textContent = 'Passaram-se 2 segundos!', 2000);
+};
+}
+{
+let timer, segundos = 0;
+document.querySelector('#startInterval').onclick = () => {
+  if (timer) return;
+  timer = setInterval(() => {
+    document.querySelector('#intervalResult').textContent = ++segundos;
+  }, 1000);
+};
+document.querySelector('#stopInterval').onclick = () => { clearInterval(timer); timer = null; };
+}
+{
+function carregar() {
+  return new Promise(resolve => setTimeout(() => resolve('Dados recebidos!'), 1500));
+}
+document.querySelector('#promiseBtn').onclick = async () => {
+  document.querySelector('#promiseResult').textContent = 'Carregando...';
+  document.querySelector('#promiseResult').textContent = await carregar();
+};
+}
+{
+async function exemplo() {
+  const resposta = await new Promise(r => setTimeout(() => r('Processo concluído.'), 1000));
+  return resposta;
+}
+document.querySelector('#awaitBtn').onclick = async () => {
+  document.querySelector('#awaitResult').textContent = await exemplo();
+};
+}
+{
+document.querySelector('#fetchBtn').onclick = async () => {
+  const out = document.querySelector('#fetchResult');
+  out.textContent = 'Consultando...';
+  try {
+    const r = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await r.json();
+    out.textContent = JSON.stringify(data, null, 2);
+  } catch (e) { out.textContent = 'Erro de rede.'; }
+};
+}
+{
+document.querySelector('#errorBtn').onclick = () => {
+  try {
+    JSON.parse('isto não é JSON');
+  } catch (erro) {
+    document.querySelector('#errorResult').textContent = 'Erro capturado: ' + erro.name;
+  }
+};
+}
+{
+const area = document.querySelector('#persistentTheme');
+let escuro = localStorage.getItem('tema-demo') === 'escuro';
+function renderTheme(){ area.classList.toggle('demo-dark', escuro); }
+document.querySelector('#persistentThemeBtn').onclick = () => {
+  escuro = !escuro; localStorage.setItem('tema-demo', escuro ? 'escuro' : 'claro'); renderTheme();
+};
+renderTheme();
+}
+{
+window.addEventListener('scroll', () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const pct = max ? scrollY / max * 100 : 0;
+  document.querySelector('#demoProgress').style.width = pct + '%';
+});
+}
+{
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => entry.target.classList.toggle('visible', entry.isIntersecting));
+});
+obs.observe(document.querySelector('#observeBox'));
+}
+{
+let fim;
+document.querySelector('#startCountdown').onclick = () => {
+  fim = Date.now() + 10000;
+  const id = setInterval(() => {
+    const restante = Math.max(0, fim-Date.now());
+    document.querySelector('#countdownResult').textContent = (restante/1000).toFixed(1)+'s';
+    if (!restante) clearInterval(id);
+  }, 100);
+};
+}
+{
+document.querySelector('#randomBtn').onclick = () => {
+  const n = Math.floor(Math.random()*100)+1;
+  document.querySelector('#randomResult').textContent = n;
+};
+}
+{
+const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';
+document.querySelector('#passwordBtn').onclick = () => {
+  let senha='';
+  for(let i=0;i<12;i++) senha += chars[Math.floor(Math.random()*chars.length)];
+  document.querySelector('#passwordResult').textContent = senha;
+};
+}
+{
+const tip = document.querySelector('#tipTarget');
+tip.onmouseenter = () => document.querySelector('#tipBox').classList.add('show');
+tip.onmouseleave = () => document.querySelector('#tipBox').classList.remove('show');
+}
+{
+document.querySelector('#focusBtn').onclick = () => {
+  document.querySelector('#focusArea').classList.toggle('focus-mode');
+};
+}
+{
+document.querySelector('#palettePicker').oninput = e => {
+  document.querySelector('#paletteArea').style.setProperty('--demo-color', e.target.value);
+};
+}
+{
+function transformDemo(){
+  const s=document.querySelector('#scaleRange').value;
+  const r=document.querySelector('#rotateRange').value;
+  document.querySelector('#transformBox').style.transform=`scale(${s}) rotate(${r}deg)`;
+}
+document.querySelector('#scaleRange').oninput=transformDemo;
+document.querySelector('#rotateRange').oninput=transformDemo;
+}
+{
+document.querySelector('#calcBtn').onclick = () => {
+  const a = Number(document.querySelector('#calcA').value);
+  const b = Number(document.querySelector('#calcB').value);
+  const op = document.querySelector('#calcOp').value;
+  const r = op==='+'?a+b:op==='-'?a-b:op==='*'?a*b:a/b;
+  document.querySelector('#calcResult').textContent = `Resultado: ${r}`;
+};
+}
+{
+let secreto = Math.floor(Math.random()*10)+1;
+document.querySelector('#guessBtn').onclick=()=>{
+  const palpite=Number(document.querySelector('#guess').value);
+  const out=document.querySelector('#guessResult');
+  if(palpite===secreto){out.textContent='🎉 Acertou! Novo número gerado.'; secreto=Math.floor(Math.random()*10)+1;}
+  else out.textContent=palpite<secreto?'Tente um número maior.':'Tente um número menor.';
+};
+}</script></body></html>
